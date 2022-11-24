@@ -1,0 +1,10 @@
+@charset "UTF-8";
+
+.main {padding-top: 120px;}
+.movieList {font-size: 0; line-height: 0;}
+.movieList li {display: inline-block; height: auto; font-size: 16px; vertical-align: top; cursor: pointer;}
+.movieList li + li {margin-left: 20px;}
+.movieList img {width: 130px; height: auto;}
+.movieList .title {display: block; overflow: hidden; width: 130px; margin-top: 10px; font-size: 16px; line-height: 30px; text-overflow: ellipsis; white-space: nowrap;}
+.movieList .rating {display: block; width: 130px; font-size: 14px; font-weight: bold; line-height: 30px;}
+.movieList .rating::before {content: "⭐"; display: inline-block; margin-right: 5px; font-size: 13px;}

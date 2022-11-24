@@ -1,0 +1,7 @@
+@charset "UTF-8";
+
+.header {position: absolute; top: 0; left: 0; right: 0;}
+.header .inner {height: 120px; padding-top: 40px;}
+.tabList {font-size: 0; line-height: 0;}
+.tabList li {display: inline-block; width: calc(100% / 4); text-align: center;}
+.tabList li a {font-size: 26px; font-weight: 600; line-height: 40px;}
