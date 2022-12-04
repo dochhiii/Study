@@ -14,16 +14,13 @@ import "./assets/css/search.css";
 import "./assets/css/modal.css";
 
 const App = () => {
+
+  // movie data 불러오기
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    // document.ready 기본 폼
     getList();
   }, []);
-
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
 
   const getList = async () => {
     const res = await axios.get('/api/v2/list_movies.json', {
@@ -36,38 +33,27 @@ const App = () => {
       }
     });
 
-    setData(res.data.data.movies)
+    setData(res.data.data.movies);
   }
 
+  const [detail, setDetail] = useState();
 
-  // const [detail, setDetail] = useState();
+  useEffect(() => {
+  }, [data]);
 
-  // useEffect(() => {
-  //   getDetail();
-  // }, []);
+  const getId = async e => {
 
-  // useEffect(() => {
-  //   console.log(detail);
-  // }, [detail]);
+    const movieId = e.target.closest('li').dataset.id;
+    const res = await axios.get('/api/v2/movie_details.json', {
+      params: {
+        movie_id: movieId,
+      }
+    });
 
-  // const getDetail = async () => {
-  //   const res = await axios.get('/api/v2/movie_details.json', {
-  //     params: {
-  //       movie_id : '',
-  //     }
-  //   });
+    setDetail(res.data.data.movie);
+  }
 
-  //   setDetail(res.data.data.movies)
-  // }
-
-  //   const onClick = (e) => {
-  //     const { target } = e;
-
-  //     const parent = target.tagName.toLowerCase() === 'li' ? target : target.closest('li');
-
-  //     console.log(parent.dataset.id);
-  //   }
-
+  // 모달 show/hide
   const  [modalOpen, setModalOpen] = useState();
 
   const openModal = () => {
@@ -77,6 +63,20 @@ const App = () => {
     setModalOpen(false);
   };
 
+  return (
+    <div className="wrap">
+      <Header />
+      <Main data={data} open={openModal} click={getId} />
+      <Search />
+
+      <Modal detail={detail} open={modalOpen} close={closeModal} />
+    </div>
+  )
+
+  // useEffect(() => {
+  //   console.log(data);
+  // }, [data]);
+
   // const onClick = (e) => {
   //   const { target } = e;
 
@@ -84,18 +84,6 @@ const App = () => {
 
   //   console.log(parent.dataset.id);
   // }
-
-  return (
-    <div className="wrap">
-      <Header />
-      <Main data={data} onClick={openModal} />
-      <Search />
-
-      <Modal open={modalOpen} close={closeModal} />
-
-      {/* <div id="modal" className="{!detail ? '' : 'show"></div> */}
-    </div>
-  )
 }
 
 export default App;

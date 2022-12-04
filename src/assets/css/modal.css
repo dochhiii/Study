@@ -1,8 +1,13 @@
 @charset "UTF-8";
 
-#ly_popup {display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0,0,0,0.7);}
-#ly_popup .popup_box {position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 300px; height: 300px; background-color: #fff; border-radius: 20px;}
-#ly_popup .inner {position: relative; height: 100%; padding: 20px;}
-#ly_popup .btn_close {position: absolute; top: 10px; right: 10px; padding: 10px; font-size: 16px; line-height: 20px;}
-#ly_popup p {font-size: 13px; text-align: center;}
-#ly_popup.show {display: block;}
+#lyPopup {display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0,0,0,0.7);}
+#lyPopup .popupBox {position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 300px; height: 300px; background-color: #fff; border-radius: 20px;}
+#lyPopup .inner {position: relative; height: 100%; padding: 20px;}
+#lyPopup .btnClose {position: absolute; top: 10px; right: 10px; padding: 10px; font-size: 16px; line-height: 20px;}
+#lyPopup.show {display: block;}
+#lyPopup .info {overflow: hidden; overflow-y: scroll; max-height: 260px; font-size: 13px;}
+#lyPopup .contentTitle {margin: 0 30px 15px 0; font-size: 13px;}
+#lyPopup .infoGroup + .infoGroup {margin-top: 10px;}
+#lyPopup .infoTitle {color: #808080;}
+#lyPopup .infoDesc > span {display: inline-block; vertical-align: top;}
+#lyPopup .infoDesc > span + span::before {content: ""; display: inline-block; width: 1px; height: 12px; margin: 3px 6px 0; background-color: #808080; vertical-align: top;}

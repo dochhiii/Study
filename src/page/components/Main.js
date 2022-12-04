@@ -1,7 +1,9 @@
 import React from "react";
 
-const Main = ({data, onClick}) => {
-    console.log('# data from App :', data);
+const Main = ({data, open, click}) => {
+
+    // console.log('# data from App :', data);
+    console.log('# data from App :', click);
 
     return (
         <main className="main">
@@ -10,8 +12,8 @@ const Main = ({data, onClick}) => {
                     {!data.length ? <li>데이터가 로드 중 입니다.</li> :
                         data.map((v, i) => {
                             return (
-                                <li key={i} onClick={onClick} data-id={v.id}>
-                                    <img src={v.medium_cover_image} alt="" />
+                                <li key={i} onClick={open} data-id={v.id}>
+                                    <img onClick={click} src={v.medium_cover_image} alt="" />
                                     <strong className="title">{v.title}</strong>
                                     <span className="rating">{v.rating}</span>
                                 </li>
